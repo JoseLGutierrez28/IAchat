@@ -5,12 +5,13 @@ const readline = require("readline");
 const { execPath } = require('process');
 
 const app = express()
+const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('src'))
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname+'/src/views/index.html')
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/src/views/index.html')
 })
 
 // const cohere = new CohereClient({
@@ -60,7 +61,7 @@ app.post('/api/chat', async (req, res) => {
     const response = await cohere.generate({
       model: "command-r-plus",
       prompt: message,
-      maxTokens: 150,
+      maxTokens: 200,
     });
 
     const reply = response.generations[0].text.trim();
@@ -72,6 +73,4 @@ app.post('/api/chat', async (req, res) => {
 });
 
 
-app.listen(3000, function(){
-
-})
+app.listen(port, function () { })
