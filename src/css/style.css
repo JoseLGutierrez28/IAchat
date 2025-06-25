@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
-  margin: 18px; /* pequeño margen para móviles */
+  margin: 28px 18px 90px 18px; /* pequeño margen para móviles */
 }
 
 .chat-header {
